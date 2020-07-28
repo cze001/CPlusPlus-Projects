@@ -1,4 +1,2 @@
-# CPlusPlus-Projects
-This is where all my C++ projects will be added. 
-
-There might or might not be something interesting in here for you ; ). Take a look. 
+# CPlusPlus-library_system
+This is a C++ library system. It is currently unfinished. This was made just for fun ; ). 
