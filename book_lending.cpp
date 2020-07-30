@@ -2,6 +2,8 @@
 #include <fstream>
 #include <filesystem>
 #include "book_lending.hpp"
+#include "other_functions.cpp"
+
 
 // Please note, everything in this code is very unfinished, and is in it's pre-alpha / pre-usefulness stage.
 
@@ -9,42 +11,41 @@
 bool File_Exists();
 void Register_Lender();
 void Remove_Lender();
-void Check_Lender_Dues(std::string library_data);
+void Check_Lender_Dues(std::string library_data = "Everyone");
 
 
 
 
 int main() {
-    
+    int t = 0;
+    int c = 0;
+
     // Checks if the file library.dat exists.
     if (File_Exists() == true) {
         std::cout << "Library.dat file found! \n";
     }
     // General UI. The T variable is the variable used for choice in the CIN and IF statements to send user to the right function.
-    int t;
-
+    std::cout << "*** Book Lending System *** \n";
     std::cout << "1. Register lender \n";
     std::cout << "2. Remove lender \n";
     std::cout << "3. Check lender dues \n";
     std::cout << ": ";
     std::cin >> t;
-    
-    if (t == 1) {
-        Register_Lender();
-    }
 
-    else if (t == 2) {
-        Remove_Lender();
-    }
-
-    else if (t == 3) {
-        Check_Lender_Dues("library.dat");
-    }
-
-    else {
-        std::cout << "Invalid input! \n";
-        main();
-    }
+    switch(t) {
+        case 1: 
+            Register_Lender();
+            break;
+        case 2:
+            Remove_Lender();
+            break;
+        case 3:
+            Check_Lender_Dues();
+            break;
+        default:
+            std::cout << "Invalid output: " << t << "\n";
+            main();
+    }       
 
     
 
@@ -69,6 +70,8 @@ bool File_Exists() {
 // Function for registering a lender of a book.
 void Register_Lender() {
     
+    time_t k = std::time(0);
+
     Book_Lending book;
 
     std::cout << "Enter name of book: ";
@@ -78,9 +81,10 @@ void Register_Lender() {
     std::string n; std::cin >> n;
 
     // The lender has to be registrered with a book. Will probably add the option to register lenders without any books connected to them, later.
-    book.new_lender(n, t);
+    book.new_lender(n, t, currentDateTime());
 
-    std::cout << "Success" << "\n"; main();
+
+    std::cout << "Success! " << "\n"; main();
 
 
 }
@@ -99,6 +103,8 @@ void Check_Lender_Dues(std::string library_data) {
     Book_Lending temp;
 
     temp.get_lender();
+    
+    main();
 
 
 
