@@ -72,11 +72,10 @@ void Register_Lender() {
     Book_Lending book;
 
     std::cout << "Enter name of book: ";
-    std::string t; std::getline(std::cin, t);
-    std::cin.ignore();
+    std::string t; std::cin >> t;
 
-    std::cout << "Enter name of lender: \n" ;
-    std::string n; std::getline(std::cin, n);
+    std::cout << "Enter name of lender: " ;
+    std::string n; std::cin >> n;
 
     // The lender has to be registrered with a book. Will probably add the option to register lenders without any books connected to them, later.
     book.new_lender(n, t);
@@ -97,8 +96,9 @@ void Remove_Lender() {
 
 // Function for checking lender dues, sorting after the lender whom is the most over their due.
 void Check_Lender_Dues(std::string library_data) {
-    std::fstream data(library_data, std::ios::out | std::ios::in | std::ios::binary );
-    // data.write("test");
+    Book_Lending temp;
+
+    temp.get_lender();
 
 
 
