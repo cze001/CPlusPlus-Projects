@@ -49,6 +49,7 @@
         "xlocmes": "cpp",
         "xlocmon": "cpp",
         "xloctime": "cpp",
-        "codecvt": "cpp"
+        "codecvt": "cpp",
+        "iterator": "cpp"
     }
 }

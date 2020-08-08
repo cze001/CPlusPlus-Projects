@@ -29,6 +29,8 @@ int main() {
     std::cout << "1. Register lender \n";
     std::cout << "2. Remove lender \n";
     std::cout << "3. Check lender dues \n";
+    std::cout << "4. Register book from pre-existing lender \n";
+    std::cout << "5. Remove book from pre-existing lender \n";
     std::cout << ": ";
     std::cin >> t;
 
@@ -59,6 +61,7 @@ bool File_Exists() {
     else if (std::filesystem::exists("library.dat") == false) {
         std::cout << "No library.dat file found. Creating one, hang on! \n";
         std::fstream data("library.dat", std::ios::out | std::ios::binary);
+        data.close();
         return true;
     }
     else {
@@ -75,13 +78,13 @@ void Register_Lender() {
     Book_Lending book;
 
     std::cout << "Enter name of book: ";
-    std::string t; std::cin >> t;
+    char t; std::cin >> t;
 
     std::cout << "Enter name of lender: " ;
-    std::string n; std::cin >> n;
+    char n; std::cin >> n;
 
     // The lender has to be registrered with a book. Will probably add the option to register lenders without any books connected to them, later.
-    book.new_lender(n, t, currentDateTime());
+    new_lender(n, t, currentDateTime());
 
 
     std::cout << "Success! " << "\n"; main();
